@@ -1,18 +1,94 @@
-export default function LandingPage({ onSignOut }) {
-    return (
-      <div className="bg-gray-100 min-h-screen w-full flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-5xl font-bold text-gray-900">Welcome to Our Platform</h1>
-        <p className="text-lg text-gray-600 mt-4 max-w-2xl">
-          We offer the best services to meet your needs. Join us today and explore!
-        </p>
-  
-        <button
-          onClick={onSignOut}
-          className="mt-6 px-6 py-3 bg-red-500 text-white rounded-lg text-lg font-semibold hover:bg-red-600"
-        >
-          Sign Out
-        </button>
+import React from 'react';
+import navbar from './navbar';
+import Image from 'next/image';
+
+const TravelSearch = () => {
+  return (
+    <main className="fixed inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full rounded-lg">
+        <Image 
+          src="/one.jpg" 
+          alt="sea" 
+          layout="fill" 
+          objectFit="cover"
+          priority
+          className="z-0"
+        />
       </div>
-    );
-  }
-  
+      
+      {/* Content Container */}
+      <div className="relative z-10 h-full w-full ">
+        {/* Hero Section - with constraint on height */}
+        <div className="h-full w-full px-8 py-16 flex flex-col mt-[8%]">
+          <div className="max-w-4xl">
+            <h1 className="text-6xl font-bold text-white mb-8">
+              Trippling
+            </h1>
+
+            {/* Search Bar */}
+            <div className="bg-slate-800/50 p-4 rounded-full flex items-center space-x-4 max-w-4xl backdrop-blur">
+              <div className="flex-1">
+                <label className="block text-sm text-gray-400 mb-1">Location</label>
+                <select className="w-full bg-transparent text-white border-none focus:ring-0">
+                  <option>Australia</option>
+                </select>
+              </div>
+
+              <div className="flex-1">
+                <label className="block text-sm text-gray-400 mb-1">Activities Type</label>
+                <select className="w-full bg-transparent text-white border-none focus:ring-0">
+                  <option>Adventure</option>
+                </select>
+              </div>
+
+              <div className="flex-1">
+                <label className="block text-sm text-gray-400 mb-1">Activate Day</label>
+                <select className="w-full bg-transparent text-white border-none focus:ring-0">
+                  <option>Feb 6 - 6</option>
+                </select>
+              </div>
+
+              <div className="flex-1">
+                <label className="block text-sm text-gray-400 mb-1">Traveler</label>
+                <select className="w-full bg-transparent text-white border-none focus:ring-0">
+                  <option>02</option>
+                </select>
+              </div>
+
+              <button className="bg-sky-400 text-white px-8 py-3 rounded-full hover:bg-sky-500">
+                Search
+              </button>
+            </div>
+
+            {/* Quick Links */}
+            <div className="flex space-x-4 mt-8">
+              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+                Tour Guide
+              </button>
+              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+                Travel Packages
+              </button>
+              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+                Transportation
+              </button>
+            </div>
+          </div>
+
+          {/* Tour Card - positioned relative to the flexbox container */}
+          {/* <div className="absolute right-8 bottom-8 bg-white p-4 rounded-lg w-72">
+            <div className="text-sm text-gray-600 mb-1">Premium</div>
+            <h3 className="text-xl font-semibold mb-2">Luxury Tour</h3>
+            <div className="text-sm text-gray-600 mb-2">Location</div>
+            <div className="text-lg font-semibold mb-4">New Mexico</div>
+            <div className="text-xl text-orange-500 font-bold mb-4">$456.00</div>
+            <button className="w-full bg-sky-400 text-white py-2 rounded-md hover:bg-sky-500">
+              View Details
+            </button>
+          </div> */}
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default TravelSearch;
