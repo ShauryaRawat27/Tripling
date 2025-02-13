@@ -13,8 +13,8 @@ export default function Navbar ({ onSignOut }) {
             <Image 
             src="/logoforsr.png"
             alt="logo"
-            width={40}
-            height={40}
+            width={100}
+            height={100}
             />
 
           </div>

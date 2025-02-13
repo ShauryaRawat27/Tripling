@@ -1,8 +1,16 @@
+"use client";
 import React from 'react';
 import navbar from './navbar';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
+import { Spectral } from "next/font/google";
+const daaru = Spectral({
+  weight : "400",
+  subsets: ["latin"]
+})
 
 const TravelSearch = () => {
+  const router = useRouter();
   return (
     <main className="fixed inset-0 w-full h-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full rounded-lg">
@@ -21,7 +29,7 @@ const TravelSearch = () => {
         {/* Hero Section - with constraint on height */}
         <div className="h-full w-full px-8 py-16 flex flex-col mt-[8%]">
           <div className="max-w-4xl">
-            <h1 className="text-6xl font-bold text-white mb-8">
+            <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
               Trippling
             </h1>
 
@@ -30,7 +38,7 @@ const TravelSearch = () => {
               <div className="flex-1">
                 <label className="block text-sm text-gray-400 mb-1">Location</label>
                 <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>Australia</option>
+                  <option>Hamburg, Germany</option>
                 </select>
               </div>
 
@@ -44,7 +52,7 @@ const TravelSearch = () => {
               <div className="flex-1">
                 <label className="block text-sm text-gray-400 mb-1">Activate Day</label>
                 <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>Feb 6 - 6</option>
+                  <option>Feb 14-16</option>
                 </select>
               </div>
 
@@ -55,7 +63,8 @@ const TravelSearch = () => {
                 </select>
               </div>
 
-              <button className="bg-sky-400 text-white px-8 py-3 rounded-full hover:bg-sky-500">
+              <button className="bg-sky-400 text-white px-8 py-3 rounded-full hover:bg-sky-500"
+              onClick={() => router.push("/TouristPlaces")}>
                 Search
               </button>
             </div>
@@ -75,16 +84,7 @@ const TravelSearch = () => {
           </div>
 
           {/* Tour Card - positioned relative to the flexbox container */}
-          {/* <div className="absolute right-8 bottom-8 bg-white p-4 rounded-lg w-72">
-            <div className="text-sm text-gray-600 mb-1">Premium</div>
-            <h3 className="text-xl font-semibold mb-2">Luxury Tour</h3>
-            <div className="text-sm text-gray-600 mb-2">Location</div>
-            <div className="text-lg font-semibold mb-4">New Mexico</div>
-            <div className="text-xl text-orange-500 font-bold mb-4">$456.00</div>
-            <button className="w-full bg-sky-400 text-white py-2 rounded-md hover:bg-sky-500">
-              View Details
-            </button>
-          </div> */}
+          {}
         </div>
       </div>
     </main>

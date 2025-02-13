@@ -11,9 +11,10 @@ export default function Home() {
     return <WelcomePage onSignIn={() => signIn("google")} />;
   }
 
-  return <><div className="overflow-y-hidden"> <Navbar onSignOut={() => signOut()} />
-  <LandingPage />;</div></>
-  
-
- 
+  return (
+    <div className="overflow-y-hidden">
+      <Navbar onSignOut={() => signOut()} />
+      <LandingPage />
+    </div>
+  );
 }
