@@ -1,16 +1,23 @@
 "use client";
-import React from 'react';
-import navbar from './navbar';
-import Image from 'next/image';
+import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Spectral } from "next/font/google";
+
 const daaru = Spectral({
-  weight : "400",
-  subsets: ["latin"]
-})
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const TravelSearch = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
+
+  const handleSearch = () => {
+    if (!searchTerm.trim()) return; // Prevent empty searches
+    router.push(`/TouristPlaces?place=${encodeURIComponent(searchTerm)}`);
+  };
+
   return (
     <main className="fixed inset-0 w-full h-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full rounded-lg">
@@ -24,67 +31,35 @@ const TravelSearch = () => {
         />
       </div>
       
-      {/* Content Container */}
-      <div className="relative z-10 h-full w-full ">
-        {/* Hero Section - with constraint on height */}
-        <div className="h-full w-full px-8 py-16 flex flex-col mt-[8%]">
-          <div className="max-w-4xl">
-            <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
-              Trippling
-            </h1>
-
-            {/* Search Bar */}
-            <div className="bg-slate-800/50 p-4 rounded-full flex items-center space-x-4 max-w-4xl backdrop-blur">
-              <div className="flex-1">
-                <label className="block text-sm text-gray-400 mb-1">Location</label>
-                <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>Hamburg, Germany</option>
-                </select>
-              </div>
-
-              <div className="flex-1">
-                <label className="block text-sm text-gray-400 mb-1">Activities Type</label>
-                <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>Adventure</option>
-                </select>
-              </div>
-
-              <div className="flex-1">
-                <label className="block text-sm text-gray-400 mb-1">Activate Day</label>
-                <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>Feb 14-16</option>
-                </select>
-              </div>
-
-              <div className="flex-1">
-                <label className="block text-sm text-gray-400 mb-1">Traveler</label>
-                <select className="w-full bg-transparent text-white border-none focus:ring-0">
-                  <option>02</option>
-                </select>
-              </div>
-
-              <button className="bg-sky-400 text-white px-8 py-3 rounded-full hover:bg-sky-500"
-              onClick={() => router.push("/TouristPlaces")}>
-                Search
-              </button>
-            </div>
-
-            {/* Quick Links */}
-            <div className="flex space-x-4 mt-8">
-              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
-                Tour Guide
-              </button>
-              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
-                Travel Packages
-              </button>
-              <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
-                Transportation
-              </button>
-            </div>
-          </div>
-
-          {/* Tour Card - positioned relative to the flexbox container */}
-          {}
+      <div className="relative z-10 h-full w-full flex flex-col justify-center items-start ml-20">
+        <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>Trippling</h1>
+        
+        <div className="bg-slate-800/50 p-4 w-full rounded-full flex items-center space-x-4 max-w-4xl backdrop-blur">
+          <input
+            type="text"
+            placeholder="Enter a location..."
+            className="p-3 rounded-md bg-transparent text-white border-none focus:outline-none flex-1 placeholder-gray-300"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button 
+            className="bg-sky-400 text-white px-8 py-3 rounded-full hover:bg-sky-500"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </div>
+        
+        <div className="flex space-x-4 mt-8">
+          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+            Tour Guide
+          </button>
+          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+            Travel Packages
+          </button>
+          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
+            Transportation
+          </button>
         </div>
       </div>
     </main>
