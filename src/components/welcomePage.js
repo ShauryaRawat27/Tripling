@@ -70,7 +70,7 @@ export default function WelcomePage({onSignIn}) {
           ].map((location, index) => (
             <div key={index} className={`relative rounded-xl overflow-hidden ${location.height}`}>
               <img
-                src={`/images/${location.name.toLowerCase()}.jpg`}
+                src={`/${location.name.toLowerCase()}.jpg`}
                 alt={location.name}
                 className="w-full h-full object-cover"
               />
@@ -102,7 +102,7 @@ export default function WelcomePage({onSignIn}) {
           ].map((location, index) => (
             <div key={index} className={`relative rounded-xl overflow-hidden ${location.height}`}>
               <img
-                src={`/images/${location.name.toLowerCase()}.jpg`}
+                src={`/${location.name.toLowerCase()}.jpg`}
                 alt={location.name}
                 className="w-full h-full object-cover"
               />
