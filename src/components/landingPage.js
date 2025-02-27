@@ -18,6 +18,7 @@ const TravelSearch = () => {
     router.push(`/TouristPlaces?place=${encodeURIComponent(searchTerm)}`);
   };
 
+
   return (
     <main className="fixed inset-0 w-full h-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full rounded-lg">
@@ -57,8 +58,9 @@ const TravelSearch = () => {
           <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
             Travel Packages
           </button>
-          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10">
-            Transportation
+          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/10"
+          onClick={() => router.push("/BudgetCalculator")}>
+            Budget Calculator
           </button>
         </div>
       </div>
