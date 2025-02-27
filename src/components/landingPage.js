@@ -8,7 +8,6 @@ const daaru = Spectral({
   weight: "400",
   subsets: ["latin"],
 });
-
 const TravelSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
