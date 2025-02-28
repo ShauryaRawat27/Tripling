@@ -19,20 +19,20 @@ const TravelSearch = () => {
   };
 
   return (
-    <main className="fixed inset-0 w-full h-full overflow-hidden">
+    <main className=" inset-0 w-full h-full overflow-hidden ">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full rounded-lg">
         <Image 
           src="/one.jpg" 
           alt="sea" 
           fill
-          className="object-cover z-0"
+          className="object-cover "
           priority
         />
       </div>
       
       {/* Content */}
-      <div className="relative z-10 h-full w-full flex flex-col justify-center items-start ml-20">
+      <div className="relative  h-full w-full flex flex-col justify-center items-start ml-20">
         <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
           Trippling
         </h1>

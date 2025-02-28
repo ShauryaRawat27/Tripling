@@ -10,6 +10,8 @@ export default function TouristPlaces() {
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     if (!placeName) return;
 

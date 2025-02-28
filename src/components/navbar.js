@@ -7,14 +7,14 @@ import Image from 'next/image';
 export default function Navbar ({ onSignOut }) {
   return (
     <div className="relative z-20">
-       <nav className="flex items-center justify-between p-4">
+       <nav className="flex items-center justify-between p-2">
         <div className="flex items-center space-x-2">
           <div>
             <Image 
             src="/logoforsr.png"
             alt="logo"
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             />
 
           </div>
