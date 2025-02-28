@@ -32,7 +32,7 @@ const TravelSearch = () => {
       </div>
       
       {/* Content */}
-      <div className="relative  h-full w-full flex flex-col justify-center items-start ml-20">
+      <div className="relative  h-full w-full flex flex-col top-[10%] items-start ml-20">
         <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
           Trippling
         </h1>
@@ -45,14 +45,14 @@ const TravelSearch = () => {
             className="p-3 rounded-md bg-transparent text-white border-none focus:outline-none flex-1 placeholder-gray-300"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()} // Trigger search on Enter
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()} 
           />
           <button 
             className={`px-8 py-3 rounded-full text-white transition-all 
               ${searchTerm.trim() ? "bg-sky-400 hover:bg-sky-500" : "bg-gray-500 cursor-not-allowed"}
             `}
             onClick={handleSearch}
-            disabled={!searchTerm.trim()} // Disable when empty
+            disabled={!searchTerm.trim()} 
           >
             Search
           </button>

@@ -3,10 +3,10 @@ import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 
 
 
-export default function Maps({latitiude, longitude}) {
+export default function Maps({latitude, longitude}) {
 
     const center = {
-        lat: latitiude || 19.026952,
+        lat: latitude || 19.026952,
         lng: longitude || 73.021891
       };
 
@@ -24,10 +24,10 @@ export default function Maps({latitiude, longitude}) {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
+    <div className="min-h-screen w-full z-10">
       <GoogleMap center={center} 
-        zoom={10} 
-        mapContainerStyle={{ width: "50%", height: "50vh" }} >
+        zoom={15} 
+        mapContainerStyle={{ width: "100%", height: "50vh" }} >
             <Marker position={center} />
         </GoogleMap>
         

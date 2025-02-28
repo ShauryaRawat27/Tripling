@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col scroll-smooth">
       
      
       <div className="relative h-screen w-full">
