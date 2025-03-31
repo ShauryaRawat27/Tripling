@@ -6,6 +6,7 @@ import LandingPage from "@/components/landingPage"; // After Sign In
 import Maps from "@/components/maps";
 import Landtwo from "@/components/landtwo";
 import Hello from "@/components/hello";
+import Aboutus from "@/app/aboutus/page";
 
 export default function Home() {
   const { data: session } = useSession(); // Get authentication state

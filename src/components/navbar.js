@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heart, ShoppingCart, Search as SearchIcon } from 'lucide-react';
 import Image from 'next/image';
-
+import Aboutus from "@/app/aboutus/page";
 
 
 export default function Navbar ({ onSignOut }) {
@@ -22,7 +22,7 @@ export default function Navbar ({ onSignOut }) {
         
         <div className="flex items-center space-x-8">
           <a href="#" className="text-white hover:text-sky-400">Home</a>
-          <a href="#" className="text-white hover:text-sky-400">About Us</a>
+          <a href="/aboutus" className="text-white hover:text-sky-400">About Us</a>
           <a href="#" className="text-white hover:text-sky-400">Destinations</a>
 
         </div>
