@@ -32,7 +32,7 @@ const TravelSearch = () => {
       </div>
       
       {/* Content */}
-      <div className="relative  h-full w-full flex flex-col top-[10%] items-start ml-20">
+      <div className="relative  h-full w-full flex flex-col top-[10%] items-start ml-20 mt-[5%]">
         <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
           Trippling
         </h1>
@@ -59,20 +59,7 @@ const TravelSearch = () => {
         </div>
         
         {/* Buttons */}
-        <div className="flex space-x-4 mt-8">
-          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
-            Tour Guide
-          </button>
-          <button className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
-            Travel Packages
-          </button>
-          <button 
-            className="text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-300"
-            onClick={() => router.push("/BudgetCalculator")}
-          >
-            Budget Calculator
-          </button>
-        </div>
+        
       </div>
     </main>
   );

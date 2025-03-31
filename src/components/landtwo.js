@@ -26,7 +26,7 @@ const LandingPage2 = () => {
         </h1>
 
         {/* Destinations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {destinations.map((destination) => (
             <div key={destination.id} className="group cursor-pointer bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="relative rounded-t-xl overflow-hidden">

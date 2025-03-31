@@ -6,7 +6,7 @@ import LandingPage from "@/components/landingPage"; // After Sign In
 import Maps from "@/components/maps";
 import Landtwo from "@/components/landtwo";
 import Hello from "@/components/hello";
-import Aboutus from "@/app/aboutus/page";
+import FoundersSection from "@/components/founders";
 
 export default function Home() {
   const { data: session } = useSession(); // Get authentication state
@@ -25,8 +25,11 @@ export default function Home() {
       </div>
 
 
-      <div className="relative w-full bg-white">
+      <div id="destnation" className="relative w-full bg-white">
         <Landtwo />
+      </div>
+      <div id="about" className="relative w-full bg-white">
+        <FoundersSection />
       </div>
     </div>
     

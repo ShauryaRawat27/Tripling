@@ -60,7 +60,7 @@ export default function TouristPlaces() {
             return (
               <div
                 key={place.place_id}
-                className="bg-blue-400 text-white-900 p-6 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer relative z-10"
+                className="backdrop-blur text-white-900 border-black border-[1px] shadow-lg shadow-black p-6 rounded-2xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer relative z-10"
                 onClick={() => {
                   if (latitude && longitude) {
                     setSelectedComponent(() => <Maps latitude={latitude} longitude={longitude} />);

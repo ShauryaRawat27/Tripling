@@ -27,7 +27,7 @@ export default function Maps({latitude, longitude}) {
     <div className="min-h-screen w-full z-10">
       <GoogleMap center={center} 
         zoom={15} 
-        mapContainerStyle={{ width: "100%", height: "50vh" }} >
+        mapContainerStyle={{ width: "100%", height: "70vh" }} >
             <Marker position={center} />
         </GoogleMap>
         
