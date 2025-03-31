@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Maps from "@/components/maps";
 import { ImCross } from "react-icons/im";
@@ -8,10 +8,8 @@ import { ImCross } from "react-icons/im";
 export default function TouristPlaces() {
   const searchParams = useSearchParams();
   const placeName = searchParams.get("place");
-
-  const [places, setPlaces] = useState([]); // ✅ Initialize as an empty array
+  const [places, setPlaces] = useState([]);
   const [selectedComponent, setSelectedComponent] = useState(null);
-
 
   useEffect(() => {
     if (!placeName) return;
@@ -33,37 +31,53 @@ export default function TouristPlaces() {
   }, [placeName]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl font-bold mb-6">Tourist Places in {placeName}</h1>
+    <div className="relative min-h-screen flex flex-col items-center text-white p-8">
+      {/* Background Image with Overlay */}
+      <div className="fixed top-0 left-0 w-full h-screen">
+      <Image
+        src="/images/tokyo.jpg"
+        alt="Background Image"
+        layout="fill"
+        objectFit="cover"
+        className="z-0"
+      />
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+</div>
 
+
+      <h1 className="relative text-5xl font-extrabold mb-8 text-center drop-shadow-lg z-10">Explore {placeName}</h1>
+      
       {places.length === 0 ? (
-        <p>Loading...</p>
+        <div className="relative flex justify-center items-center h-64 z-10">
+          <div className="w-16 h-16 border-4 border-white border-dashed rounded-full animate-spin"></div>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl z-10">
           {places.map((place) => {
             const latitude = place.geometry?.location?.lat;
             const longitude = place.geometry?.location?.lng;
 
             return (
-              <div key={place.place_id} className="bg-gray-800 p-4 rounded-md hover:scale-105 transition-transform "  onClick={() => {
-                if (latitude && longitude) {
-                  setSelectedComponent(() => <Maps latitude={latitude} longitude={longitude} />);
-                } else {
-                  console.error("Latitude or Longitude is missing.");
-                }
-              }}>
-                <h2 className="text-xl font-bold">{place.name}</h2>
-                <p className="text-gray-400">{place.vicinity}</p>
-
+              <div
+                key={place.place_id}
+                className="bg-blue-400 text-white-900 p-6 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer relative z-10"
+                onClick={() => {
+                  if (latitude && longitude) {
+                    setSelectedComponent(() => <Maps latitude={latitude} longitude={longitude} />);
+                  } else {
+                    console.error("Latitude or Longitude is missing.");
+                  }
+                }}
+              >
+                <h2 className="text-2xl font-semibold mb-2">{place.name}</h2>
+                <p className="text-white-600 mb-4">{place.vicinity}</p>
                 {place.photos?.length > 0 && (
                   <Image
                     src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photos[0].photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
                     alt={place.name}
                     width={400}
                     height={300}
-                    className="mt-2 rounded-md cursor-pointer"
-                   
-                    
+                    className="rounded-lg shadow-lg object-cover w-full h-60"
                   />
                 )}
               </div>
@@ -72,21 +86,19 @@ export default function TouristPlaces() {
         </div>
       )}
 
-
       {selectedComponent && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div className="bg-white  rounded-lg shadow-lg h-[50%] w-[50%]">
-    <button
-        onClick={() => setSelectedComponent(null)}
-        className="px-4 py-1  text-black w-[5%]"
-      >
-      <ImCross />
-      </button>
-      {selectedComponent}
-    
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 w-[90%] md:w-[50%] relative flex flex-col items-center animate-fadeIn">
+            <button
+              onClick={() => setSelectedComponent(null)}
+              className="absolute top-4 right-4 text-gray-700 text-xl p-2 bg-gray-300 rounded-full hover:bg-gray-400"
+            >
+              <ImCross />
+            </button>
+            {selectedComponent}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
