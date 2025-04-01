@@ -34,7 +34,7 @@ const TravelSearch = () => {
       {/* Content */}
       <div className="relative  h-full w-full flex flex-col top-[10%] items-start ml-20 mt-[5%]">
         <h1 className={`text-8xl font-bold text-white mb-8 ${daaru.className}`}>
-          Trippling
+          Tripling
         </h1>
         
         {/* Search Bar */}
