@@ -24,10 +24,10 @@ export default function Maps({latitude, longitude}) {
   }
 
   return (
-    <div className="min-h-screen w-full z-10">
+    <div className="min-h-screen w-full z-10 ">
       <GoogleMap center={center} 
         zoom={15} 
-        mapContainerStyle={{ width: "100%", height: "70vh" }} >
+        mapContainerStyle={{ width: "100%", height: "70vh" , zIndex:0}} >
             <Marker position={center} />
         </GoogleMap>
         

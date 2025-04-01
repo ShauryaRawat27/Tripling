@@ -13,12 +13,12 @@ const LandingPage2 = () => {
       <div className="container mx-auto px-6 py-12">
         
         {/* Header Section */}
-        <div className="flex items-center justify-center mb-8">
+        {/* <div className="flex items-center justify-center mb-8">
           <div className="flex items-center gap-3">
             <img src="/images/hot-air-balloon.jpg" alt="Hot Air Balloon" className="w-12 h-12" />
             <span className="text-orange-500 text-xl font-semibold">Popular Destination</span>
           </div>
-        </div>
+        </div> */}
 
         {/* Title */}
         <h1 className="text-4xl font-extrabold text-center mb-12 text-gray-900 tracking-wide">

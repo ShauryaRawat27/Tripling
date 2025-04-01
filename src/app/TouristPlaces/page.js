@@ -86,18 +86,20 @@ export default function TouristPlaces() {
         </div>
       )}
 
-      {selectedComponent && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 w-[90%] md:w-[50%] relative flex flex-col items-center animate-fadeIn">
-            <button
-              onClick={() => setSelectedComponent(null)}
-              className="absolute top-4 right-4 text-gray-700 text-xl p-2 bg-gray-300 rounded-full hover:bg-gray-400"
-            >
-              <ImCross />
-            </button>
-            {selectedComponent}
-          </div>
-        </div>
+{selectedComponent && (
+   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 mb-[10%]">
+     <div className="bg-white  rounded-lg shadow-lg h-[50%] w-[50%] ">
+     <button
+         onClick={() => setSelectedComponent(null)}
+         className="px-4 py-1  text-black w-[5%]"
+       >
+       <ImCross />
+       </button>
+       {selectedComponent}
+     
+     </div>
+   </div>
+      
       )}
     </div>
   );
