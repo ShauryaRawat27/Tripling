@@ -23,7 +23,7 @@ const TravelSearch = () => {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full rounded-lg">
         <Image 
-          src="/one.jpg" 
+          src="/budget.png" 
           alt="sea" 
           fill
           className="object-cover "

@@ -62,7 +62,7 @@ const BudgetCalculator = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-transparent text-white p-6 relative">
       <Image
-        src="/budget.png"
+        src="/one.jpg"
         alt="Background Image"
         layout="fill"
         objectFit="cover"
