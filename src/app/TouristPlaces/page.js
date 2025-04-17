@@ -1,9 +1,14 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import Maps from "@/components/maps";
 import { ImCross } from "react-icons/im";
+import dynamic from "next/dynamic";
+
+const Maps = dynamic(() => import("@/components/maps"), {
+  ssr: false,
+  loading: () => <div className="text-white">Loading Map...</div>,
+});
 
 export default function TouristPlaces() {
   const searchParams = useSearchParams();
@@ -32,21 +37,22 @@ export default function TouristPlaces() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center text-white p-8">
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div className="fixed top-0 left-0 w-full h-screen">
-      <Image
-        src="/images/tokyo.jpg"
-        alt="Background Image"
-        layout="fill"
-        objectFit="cover"
-        className="z-0"
-      />
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-</div>
+        <Image
+          src="/images/tokyo.jpg"
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className="z-0"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
 
+      <h1 className="relative text-5xl font-extrabold mb-8 text-center drop-shadow-lg z-10">
+        Explore {placeName}
+      </h1>
 
-      <h1 className="relative text-5xl font-extrabold mb-8 text-center drop-shadow-lg z-10">Explore {placeName}</h1>
-      
       {places.length === 0 ? (
         <div className="relative flex justify-center items-center h-64 z-10">
           <div className="w-16 h-16 border-4 border-white border-dashed rounded-full animate-spin"></div>
@@ -60,10 +66,12 @@ export default function TouristPlaces() {
             return (
               <div
                 key={place.place_id}
-                className="backdrop-blur text-white-900 border-black border-[1px] shadow-lg shadow-black p-6 rounded-2xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer relative z-10"
+                className="backdrop-blur text-white border-black border-[1px] shadow-lg shadow-black p-6 rounded-2xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer relative z-10"
                 onClick={() => {
                   if (latitude && longitude) {
-                    setSelectedComponent(() => <Maps latitude={latitude} longitude={longitude} />);
+                    setSelectedComponent(
+                      <Maps latitude={latitude} longitude={longitude} />
+                    );
                   } else {
                     console.error("Latitude or Longitude is missing.");
                   }
@@ -86,20 +94,18 @@ export default function TouristPlaces() {
         </div>
       )}
 
-{selectedComponent && (
-   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 mb-[10%]">
-     <div className="bg-white  rounded-lg shadow-lg h-[50%] w-[50%] ">
-     <button
-         onClick={() => setSelectedComponent(null)}
-         className="px-4 py-1  text-black w-[5%]"
-       >
-       <ImCross />
-       </button>
-       {selectedComponent}
-     
-     </div>
-   </div>
-      
+      {selectedComponent && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 mb-[10%]">
+          <div className="bg-white rounded-lg shadow-lg h-[50%] w-[50%] relative">
+            <button
+              onClick={() => setSelectedComponent(null)}
+              className="absolute top-2 right-2 text-black"
+            >
+              <ImCross />
+            </button>
+            {selectedComponent}
+          </div>
+        </div>
       )}
     </div>
   );
