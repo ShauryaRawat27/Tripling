@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { ImCross } from "react-icons/im";
@@ -10,7 +11,7 @@ const Maps = dynamic(() => import("@/components/maps"), {
   loading: () => <div className="text-white">Loading Map...</div>,
 });
 
-export default function TouristPlaces() {
+function TouristPlacesContent() {
   const searchParams = useSearchParams();
   const placeName = searchParams.get("place");
   const [places, setPlaces] = useState([]);
@@ -108,5 +109,13 @@ export default function TouristPlaces() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function TouristPlaces() {
+  return (
+    <Suspense fallback={<div className="text-white">Loading...</div>}>
+      <TouristPlacesContent />
+    </Suspense>
   );
 }

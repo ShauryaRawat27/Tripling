@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
-  const placeName = searchParams.get("location");
+  const placeName = searchParams.get("place");
 
   if (!placeName) {
     return NextResponse.json({ error: "Missing location parameter" }, { status: 400 });
