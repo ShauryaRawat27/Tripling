@@ -6,11 +6,13 @@ import Image from "next/image";
 import { ImCross } from "react-icons/im";
 import dynamic from "next/dynamic";
 
+// Dynamically import Maps component to ensure it's only loaded client-side
 const Maps = dynamic(() => import("@/components/maps"), {
-  ssr: false,
+  ssr: false, 
   loading: () => <div className="text-white">Loading Map...</div>,
 });
 
+// This is the content part that uses the search params
 function TouristPlacesContent() {
   const searchParams = useSearchParams();
   const placeName = searchParams.get("place");
@@ -112,6 +114,7 @@ function TouristPlacesContent() {
   );
 }
 
+// Main TouristPlaces component wrapped with Suspense
 export default function TouristPlaces() {
   return (
     <Suspense fallback={<div className="text-white">Loading...</div>}>
